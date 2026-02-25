@@ -31,6 +31,7 @@ cc_args(
     format = {
         "resource_dir": "//runtimes:resource_directory",
     },
+    apply_path_mapping = False, # not using path mapping for link actions
 )
 
 cc_args(
@@ -89,6 +90,7 @@ cc_args(
         "libcxx_headers_include_search_path": "//runtimes/libcxx:libcxx_headers_include_search_directory",
         "libcxxabi_headers_include_search_path": "//runtimes/libcxx:libcxxabi_headers_include_search_directory",
     },
+    apply_path_mapping = True,
 )
 
 cc_args(
@@ -110,6 +112,7 @@ cc_args(
     format = {
         "crt_objects_directory": "//runtimes:crt_objects_directory",
     },
+    apply_path_mapping = False, # not using path mapping for link actions
 )
 
 cc_args(
@@ -184,6 +187,7 @@ cc_args(
     format = {
         "ubsan_ignore": "//sanitizers:ubsan_ignore",
     },
+    apply_path_mapping = True, # source files, not really relevant
 )
 
 # Note that sanitizers must use `cc_unsanitized_library` on third-party deps
@@ -232,6 +236,7 @@ cc_args(
     format = {
         "cfi_ignore": "//sanitizers:cfi_ignore",
     },
+    apply_path_mapping = True, # source files, not really relevant
 )
 
 cc_args(
@@ -251,6 +256,7 @@ cc_args(
     format = {
         "cfi_ignore": "//sanitizers:cfi_ignore",
     },
+    apply_path_mapping = False, # link actions aren't path mapped (but, since only source files are used here: a moot point)
 )
 
 cc_args_list(
@@ -326,6 +332,7 @@ cc_args(
     format = {
         "dfsan_abilist": "//runtimes/compiler-rt:clang_rt.dfsan_abilist",
     },
+    apply_path_mapping = True, # source files, not really relevant
 )
 
 # Note that sanitizers must use `cc_unsanitized_library` on third-party deps
@@ -737,6 +744,7 @@ cc_args(
     format = {
         "libcxx_library_search_path": "//runtimes/libcxx:libcxx_library_search_directory",
     },
+    apply_path_mapping = False, # link actions aren't path mapped
 )
 
 # Those are stubs since we link against static_runtime_libs / dynamic_runtime_libs.
@@ -754,6 +762,7 @@ cc_args(
     format = {
         "libunwind_library_search_path": "//runtimes/libunwind:libunwind_library_search_directory",
     },
+    apply_path_mapping = False, # link actions aren't path mapped
 )
 
 cc_args(
